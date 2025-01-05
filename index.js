@@ -26,9 +26,19 @@ app.get('/new', (req, res) => {
   res.render('form');
 });
 
+app.get('/messages/:id', (req, res) => {
+  const message = messages[req.params.id];
+  if (message) {
+    res.render('message', { title: "Message Details", message });
+  } else {
+    res.status(404).send('Message not found');
+  }
+})
+
 app.post('/new', (req, res) => {
-  const { user, text } = req.body;
-  messages.push({ test, user, added: new Date() });
+  const messageText = req.body.messageText;
+  const messageUser = req.body.messageUser;
+  messages.push({ text: messageText, user: messageUser, added: new Date() });
   res.redirect('/');
 });
 
