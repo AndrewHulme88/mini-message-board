@@ -32,6 +32,6 @@ app.post('/new', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server running at http://localhost: ${PORT}`);
 });
