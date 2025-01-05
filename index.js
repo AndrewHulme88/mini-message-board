@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true}));
@@ -19,11 +19,11 @@ const messages = [
 ];
 
 app.get('/', (req, res) => {
-  res.render('index', { messages });
+  res.render('index', { title: "Mini Messageboard", messages });
 });
 
 app.get('/new', (req, res) => {
-  res.render('new');
+  res.render('form');
 });
 
 app.post('/new', (req, res) => {
@@ -33,5 +33,5 @@ app.post('/new', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost: ${port}`);
+  console.log(`Server running at http://localhost: ${PORT}`);
 });
